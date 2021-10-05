@@ -1,0 +1,598 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>部長引継ぎ資料</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='部長引継ぎ資料'><span>部長引継ぎ資料</span></h1><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#部長引継ぎ資料">部長引継ぎ資料</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n4"><a class="md-toc-inner" href="#引継ぎ資料">引継ぎ資料</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n8"><a class="md-toc-inner" href="#通常業務内容">通常業務内容</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n10"><a class="md-toc-inner" href="#挨拶">挨拶</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n33"><a class="md-toc-inner" href="#エール">エール</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n39"><a class="md-toc-inner" href="#二次会について">二次会について</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n49"><a class="md-toc-inner" href="#文書作成・代表者サイン">文書作成・代表者サイン</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n52"><a class="md-toc-inner" href="#顧問の先生へのご連絡">顧問の先生へのご連絡</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n55"><a class="md-toc-inner" href="#全体ミーティング">全体ミーティング</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n61"><a class="md-toc-inner" href="#部内アンケート">部内アンケート</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n65"><a class="md-toc-inner" href="#各種行事・親睦会への参加">各種行事・親睦会への参加</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n79"><a class="md-toc-inner" href="#演奏会当日">演奏会当日</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n82"><a class="md-toc-inner" href="#応援団について">応援団について</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n87"><a class="md-toc-inner" href="#先生レッスンについて">先生レッスンについて</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n90"><a class="md-toc-inner" href="#前に張る紙">前に張る紙</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n93"><a class="md-toc-inner" href="#その他">その他</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n97"><a class="md-toc-inner" href="#最後に">最後に</a></span></p></div><p>&nbsp;</p><h2 id='引継ぎ資料'><span>引継ぎ資料</span></h2><p><span>引継ぎ資料です。Wordファイルはダウンロードが始まります</span></p><p><span>PDF</span></p><p><span>Word</span></p><h2 id='通常業務内容'><span>通常業務内容</span></h2><p><span>通常業務(コロナ関連以外)の内容です。</span></p><h4 id='挨拶'><span>挨拶</span></h4><ul><li><p><span>練習・合奏開始時</span></p><p><span>「お願いします」(講師の先生が訪問時：相手様に向けてのご挨拶→「お願いします」)</span></p><p><span>挨拶例文：本日はお越しいただきありがとうございます。今日は○○などに集中してよりよい練習を実現できるよう頑張ります</span></p></li><li><p><span>練習・合奏後</span></p><p><span>「ありがとうございました」</span></p></li><li><p><span>始礼・終礼</span></p><p><span>「諸連絡→小話→挨拶」の流れです</span></p></li><li><p><span>その他</span></p><ul><li><span>応援団との活動時に応援団リーダーに団長がいなければ総部集合時に代表挨拶をします。応援の時には前もって誰かに楽器を預けておくようにしましょう。</span></li><li><span>合宿やコンパなど特別な機会に挨拶をすることもあります。状況に応じて挨拶ができるように、担当者と打ち合わせておくようにしましょう。</span></li><li><span>応援団の懇親会やコンパでは開始の際に一言求められることもあるので応援団の方や応援団担当に確認しておきましょう。</span></li></ul><p><span>いずれの挨拶も部長不在の際には、副部長や応援団担当に代わりに挨拶してもらうように頼んでおきます。不在の際は早めに連絡してあげましょう。</span></p></li></ul><p>&nbsp;</p><h4 id='エール'><span>エール</span></h4><blockquote><p><span>「吹奏楽部のコンパでは、応援歌「宇宙を股に」と，エールでコンパを締めます。これらの練習は、正装で人のいないところで行い、また，エール練習に関する話題は他の部員の前では避けるようにするという応援団の決まりがありましたが、私は完全に忘れていたのでそこまで厳守するべきことではないと思います。今年度から応援団が復活しましたがエールの伝授は吹奏楽部で行いましょう。卒部式のコンパではエール交換を、新歓コンパと新幹部発表コンパでは、新入生・新幹部に向けてエールを行うので、忘れないようにしましょう。卒部式のエール交換については卒部される代の部長の方と相談しておきましょう。(by59代部長)」</span></p></blockquote><p><span>とありますがコロナで完全に消えました。笑　</span></p><p><span>ただ応援団(リーダー部)の新規入部が今年1名であり、今後応援団が続くか</span><font color="blue"><span>依然不明なまま</span></font><span>です。応援団不在の機会が増えればエールを求められる機会も必然的に増加するので応援団(リーダー部)から教わるなどしてエールはできるようになっておいた方がいいと思います。</span></p><p>&nbsp;</p><h4 id='二次会について'><span>二次会について</span></h4><p><span>そもそも懇親会を経験していないので想像が付かないと思うのでまずコンパの流れについて説明します。</span></p><p><span>基本的に懇親会はトータルで「交代式などの式典」→「コンパ(＠食堂)」→「二次会」の流れになっています。この「式典」「コンパ」には部員は原則出席で、</span><strong><span>OBさんが来ます</span></strong><span>！そのためどちらかというと「接待的要素」が強いです。二次会は部員の希望参加者だけで行うのでこれが一番楽しいです。ここからが引継ぎになります。</span></p><ul><li><span>出欠管理や店の決定は基本的に庶務と副部長に一任しています。</span></li><li><span>乾杯とお開きは部長に任されています。行事や時間帯により調節するようにしましょう。基本的には90~120分程度がよいと思います。前もって幹部で目安を決めておくと良いと思います。また、開始が遅れたときは乾杯の前に謝罪の一言を言うようにします。</span></li></ul><p><span>となっています。困ったら六甲道前の「居酒屋わん」で飲み放題のコースを予約すればなんとかなります。乾杯の挨拶もなんとかなります。</span></p><p>&nbsp;</p><h4 id='文書作成・代表者サイン'><span>文書作成・代表者サイン</span></h4><p><span>依頼を受けて文書作成やサインをします。ブリックやパンフレットのあいさつ文、学生センターに提出する書類のサイン等です。連盟や他団体からの依頼もあります。</span></p><p>&nbsp;</p><h4 id='顧問の先生へのご連絡'><span>顧問の先生へのご連絡</span></h4><p><span>幹部交代式や卒部式といった式典への出欠連絡・祝辞依頼などを行います（基本庶務から依頼されます）。吹奏楽部のOB総会にも出席依頼をしました。こちらには庶務は関わっていないですがOB担当から連絡が来ました。</span></p><p>&nbsp;</p><h4 id='全体ミーティング'><span>全体ミーティング</span></h4><blockquote><p><span>「従来までの幹部は幹部が方針などを全て決め、下回生はこの引継ぎのみで新年度をスタートしていました。そのため先輩方が「何に躓き失敗したのか」、「どのような思考で幹部生活を送っていたのか」などが分からず何度も同じ過ちをしていたため「全学年が頭を使う部活」をモットーとして始めました。（59代から）」</span></p><p><span>「主な議題は「幹部の方針」「新しく導入したこと」「部員の気になることに答える」などです。部長や指揮者の目指しているものは紙やメールでは伝わりません。しっかりと部員全体の前に立ち、訴える必要があります。」(by59代部長)</span></p></blockquote><p><span>このように59代から全体ミーティングが始まりました。62代では復習などの意味を込めて「部の行事」「役割」「位置づけ」などの話をしました。ただZOOMだったので効果に疑問は残りました…</span></p><p>&nbsp;</p><h4 id='部内アンケート'><span>部内アンケート</span></h4><p><strong><span>サマコンと定演後</span></strong><span>に部内匿名アンケートを行い客観的な意見を受け止め、次の半期に活かしていくのが目的です。各スタッフは個々でアンケートを行っているため基本生活面、練習面の二つに焦点を絞り行いました。厳しい言葉もたくさんありますが、</span><strong><span>決して一つ一つに反論するのではなく</span></strong><span>客観的に受け止めましょう。質問項目を部長、副部長、指揮者でよく考えた方がいいと思います。それによって部員の答え方が変わってきます。</span></p><p><span>今年度はサマコンを中止したため夏のアンケートはなくしました。正直かなり怖いですね笑</span></p><p>&nbsp;</p><h4 id='各種行事・親睦会への参加'><span>各種行事・親睦会への参加</span></h4><p><span>吹奏楽部主催の行事、応援団主催の親睦会などの行事は</span><font color="red"><strong><span>原則参加</span></strong></font><span>となります。応援団関係の行事は</span><strong><span>連絡が急</span></strong><span>なこともあるので(というより確定で急です)、柔軟に対応できるようにできると良いです。ここでは主なもの二つについて説明しておきます</span></p><ul><li><h5 id='応援団の定例会'><span>応援団の定例会</span></h5></li></ul><blockquote><p><span>　定例会は昨年まで以下の通りで行われましたが応援団のOBメンバーが総入れ替えし部長が定期的に出席する定例会はなくなりました。大きな行事の前は呼ばれることもあるため応援団担当としっかり連絡を取るようにして下さい</span></p></blockquote><p><span>恐らくですがもう定例会は無いです。ただ何があるのか分かりませんので共有しておきます。</span></p><ul><li><h5 id='学内行事や体育会運動部のコンパ等への出席'><span>学内行事や体育会運動部のコンパ等への出席</span></h5><p><span>学内から応援団として来て欲しいという依頼も受けます。今年度は、入学式やホームカミングデイでの演奏などがありました。応援団担当と相談しながら出来る限り出席するようにしましょう。</span></p><p><span>特に入学式に関する連絡は大丈夫ですが、ホームカミングデーは連絡が遅いです。夏ごろにアバウトですがi一度情報が伝えらえるので、それを基に事前にある程度予定を管理しておいた方がよいです。</span></p><p>&nbsp;</p></li></ul><h4 id='演奏会当日'><span>演奏会当日</span></h4><p><span>当日の朝、集合時にお手伝いの応援団の方々に「お願いします」とあいさつします。リハーサル後の学注、演奏会後のビールコンパの乾杯・お開きも行います。流れは総務部長と確認しましょう。</span></p><p>&nbsp;</p><h4 id='応援団について'><span>応援団について</span></h4><blockquote><p><span>応援団リーダー部は59代が復活をさせました。その目的の一つに、学校から要請される応援活動の負担を軽減させるというものがあったようです。応援団は今の学校の経営陣からは非常に受けがいいため、応援団総部に所属しておくことはメリットの方が大きいと考えています。負担はある程度あるかもしれませんが、部員の負担とメリットを、ぎりぎりのバランスで調整していくのが得策だと考えます。(by59代部長)</span></p></blockquote><p><span>ここからは少し大事な話になります。応援活動にここ２年間全く参加していないので</span></p><p>&nbsp;</p><h4 id='先生レッスンについて'><span>先生レッスンについて</span></h4><p><span>2019年は先生レッスンを多くするため、特別会計として一般会計とは別に先生レッスン代を徴収しました。管轄は部長でしたが、会計や正指揮者との兼ね合いでどうしていくか決めていってください。今年度は正指揮者に丸投げしてました。</span></p><p>&nbsp;</p><h4 id='前に張る紙'><span>前に張る紙</span></h4><p><span>やってもやらなくてもいいのですが、演奏会前にみんなに寄せ書きしてもらいます。模造紙は庶務がもっているのでもらってください。ワードで文字を375～400くらいの大きさにしてコピーし、それを模造紙の裏にしいてなぞっていました。</span></p><p>&nbsp;</p><h4 id='その他'><span>その他</span></h4><p><span>3月には大学主催のリーダーズトレーニングという行事に参加します。学生センターから案内が来ますが、各団体の代表者がリーダーとして必要な知識や規則などを学ぶ場です。</span></p><p><span>2020年度はオンライン開催になりました(</span><a href='https://www.kobe-u.ac.jp/campuslife/life/club/Leaders.html' target='_blank' class='url'>https://www.kobe-u.ac.jp/campuslife/life/club/Leaders.html</a><span>)</span></p><p>&nbsp;</p><h4 id='最後に'><span>最後に</span></h4><p><span>代表者という役職上、ここに挙げていない仕事もあるかもしれませんが、臨機応変に上手く処理してください。基本的にはどれも何とかなるので余裕を持って対処するのが一番です。</span></p></div></div>
+</body>
+</html>
